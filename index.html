@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,21 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ROST Clicker</title>
   <style>
+    /* === Базовые стили (пиксельный чёрно‑белый) === */
     body {
       margin: 0;
       background: #000;
       color: #fff;
       font-family: monospace;
       image-rendering: pixelated;
-      touch-action: manipulation;
+      touch-action: manipulation; /* для свайпов */
     }
+    /* === Кнопка меню (привязанная к настройкам) === */
     #menu-button {
       position: fixed;
       top: 10px;
       left: 10px;
       cursor: pointer;
       font-size: 24px;
+      z-index: 20;
     }
+    /* === Блок с настройками (громкость и рестарт) === */
     #menu {
       position: fixed;
       top: 50px;
@@ -28,28 +31,33 @@
       background: #111;
       padding: 15px;
       border: 2px solid #fff;
-      z-index: 10;
+      z-index: 20;
     }
+    /* === Репутация по центру сверху === */
     #reputation {
       position: fixed;
       top: 10px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 18px;
+      z-index: 10;
     }
+    /* === Персонаж + таймер смены (уменьшенная гифка) === */
     #character {
       position: fixed;
       top: 10px;
       right: 10px;
       text-align: center;
+      z-index: 10;
     }
     #character img {
-      width: 48px;
+      width: 48px;  /* сильно уменьшили */
       height: auto;
     }
     #shiftTimer {
       font-size: 14px;
     }
+    /* === Шкала СДВГ (внизу, слева) === */
     #adhd-bar-container {
       position: fixed;
       bottom: 70px;
@@ -57,12 +65,14 @@
       width: 80vw;
       height: 12px;
       border: 1px solid #fff;
+      z-index: 10;
     }
     #adhd-bar {
       height: 100%;
       width: 100%;
       background: white;
     }
+    /* === Кнопка клика (центральная внизу) === */
     #click-button {
       position: fixed;
       bottom: 15px;
@@ -75,17 +85,21 @@
       border-radius: 8px;
       font-size: 18px;
       transition: transform 0.1s;
+      z-index: 10;
     }
     #click-button:active {
       transform: translateX(-50%) scale(0.95);
     }
+    /* === Прокачки (правый нижний угол) === */
     #upgrades {
       position: fixed;
       bottom: 15px;
       right: 10px;
       max-width: 150px;
       font-size: 12px;
+      z-index: 10;
     }
+    /* === Окно входящего звонка (полезно при ивентах) === */
     #event {
       position: fixed;
       top: 50%;
@@ -94,56 +108,87 @@
       background: #111;
       padding: 10px;
       border: 2px solid #fff;
+      z-index: 20;
     }
+    /* === Полноэкранный block для TikTok (надпись на весь экран) === */
     #tiktok {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: #222;
+      background: rgba(30, 30, 30, 0.95);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      z-index: 20;
+      font-size: 48px;         /* Крупный шрифт */
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      z-index: 30;
+      color: #fff;
     }
+    /* === Энергетик (иконка) === */
     #energy-drink {
       position: fixed;
       bottom: 15px;
       left: 10px;
       font-size: 24px;
       cursor: pointer;
+      z-index: 10;
     }
+    /* === Скрытый класс === */
     .hidden {
       display: none;
     }
   </style>
 </head>
 <body>
+  <!-- Кнопка меню (открывает/скрывает #menu) -->
   <div id="menu-button">≡</div>
+
+  <!-- Меню с настройками (громкость, рестарт и кнопка TikTok) -->
   <div id="menu" class="hidden">
     <h2>Настройки</h2>
     <label>Музыка: <input type="range" id="musicVolume" min="0" max="1" step="0.01"></label><br>
     <label>Звуки: <input type="range" id="sfxVolume" min="0" max="1" step="0.01"></label><br>
     <button id="restartBtn">Рестарт</button>
-    <button id="openTiktokBtn">ТикТок</button>
+    <button id="openTiktokBtn">Открыть TikTok</button>
   </div>
+
+  <!-- Репутация в центре сверху -->
   <div id="reputation">РЕПУТАЦИЯ: 0</div>
+
+  <!-- Мелкий персонаж и таймер смены (правый верхний угол) -->
   <div id="character">
     <img id="characterImg" src="assets/images/character.gif" alt="Персонаж">
     <div id="shiftTimer">00:00</div>
   </div>
-  <div id="adhd-bar-container"><div id="adhd-bar"></div></div>
+
+  <!-- Шкала СДВГ (внизу, слева) -->
+  <div id="adhd-bar-container">
+    <div id="adhd-bar"></div>
+  </div>
+
+  <!-- Кнопка "КЛАЦ" (центр снизу) -->
   <div id="click-button">КЛАЦ</div>
+
+  <!-- Блок для прокачек (право внизу) -->
   <div id="upgrades"></div>
+
+  <!-- Окно входящего звонка (скрыто по умолчанию) -->
   <div id="event" class="hidden">
     <p>Телефонный звонок!</p>
     <button id="acceptBtn">Принять</button>
     <button id="declineBtn">Отклонить</button>
   </div>
-  <div id="tiktok" class="hidden">ТУТ ТИПО ТИКТОК</div>
+
+  <!-- Полноэкранный блок "TikTok" (скрыт по умолчанию) -->
+  <div id="tiktok" class="hidden">ТУПА ТИКТОК</div>
+
+  <!-- Иконка энергетика (лево снизу) -->
   <div id="energy-drink" title="Энергетик (нажми)">🧃</div>
+
+  <!-- Мини‑скрипт для открытия/закрытия меню и TikTok -->
   <script>
     document.getElementById("menu-button").onclick = () => {
       document.getElementById("menu").classList.toggle("hidden");
@@ -154,6 +199,7 @@
     document.getElementById("tiktok").onclick = () => {
       document.getElementById("tiktok").classList.add("hidden");
     };
+    // Здесь далее подключается твоя основная логика (таймер, ивенты, прокачки и т.д.).
   </script>
 </body>
 </html>
