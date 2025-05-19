@@ -1,89 +1,114 @@
 
 body {
-    font-family: 'Courier New', monospace;
-    background-color: #111;
-    color: #0f0;
-    margin: 0;
-    overflow: hidden;
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: monospace;
+  image-rendering: pixelated;
 }
-#title {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 24px;
-}
-#respect-bar {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-#character {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 64px;
-    height: 64px;
-    background-image: url('assets/char.gif');
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-#shift-timer {
-    position: absolute;
-    top: 80px;
-    right: 10px;
-}
-#adhd-bar-wrapper {
-    position: absolute;
-    bottom: 80px;
-    left: 10px;
-    width: 80%;
-    height: 10px;
-    background: #444;
-}
-#adhd-bar {
-    height: 100%;
-    width: 100%;
-    background: #0ff;
-}
-#energy-drink {
-    position: absolute;
-    bottom: 80px;
-    right: 10px;
-    cursor: pointer;
-}
-#click-button {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #0f0;
-    color: #000;
-    font-size: 20px;
-    padding: 10px 20px;
-    border: 2px solid #fff;
-    cursor: pointer;
-    animation: shake 0.1s infinite;
-}
-@keyframes shake {
-    0% { transform: translateX(-50%) translateY(-1px); }
-    50% { transform: translateX(-50%) translateY(1px); }
-    100% { transform: translateX(-50%) translateY(-1px); }
-}
+
 #menu-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    cursor: pointer;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
 }
+
 #menu {
-    position: absolute;
-    top: 50px;
-    left: 10px;
-    background: #222;
-    padding: 10px;
-    border: 1px solid #fff;
+  position: fixed;
+  top: 40px;
+  left: 10px;
+  background: #111;
+  padding: 10px;
+  border: 1px solid #fff;
 }
+
+#character {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  text-align: center;
+}
+
+#character img {
+  width: 64px;
+  height: auto;
+}
+
+#shiftTimer {
+  margin-top: 5px;
+}
+
+#reputation {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#adhd-bar-container {
+  position: fixed;
+  bottom: 70px;
+  left: 10px;
+  width: 80vw;
+  height: 10px;
+  border: 1px solid #fff;
+}
+
+#adhd-bar {
+  height: 100%;
+  width: 100%;
+  background: white;
+}
+
+#click-button {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #000;
+  padding: 10px;
+  border: 2px solid #000;
+  cursor: pointer;
+}
+
+#upgrades {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  max-width: 150px;
+}
+
+#event {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  padding: 10px;
+  border: 2px solid #fff;
+}
+
+#tiktok {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#energy-drink {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  cursor: pointer;
+}
+
 .hidden {
-    display: none;
+  display: none;
 }
