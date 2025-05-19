@@ -1,114 +1,232 @@
-
+/* === БАЗОВЫЕ СТИЛИ (пиксельный чёрно‑белый) === */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 body {
   margin: 0;
   background: #000;
   color: #fff;
   font-family: monospace;
   image-rendering: pixelated;
+  touch-action: manipulation;
+  overflow: hidden;
 }
-
+/* === КНОПКА «МЕНЮ» === */
 #menu-button {
   position: fixed;
   top: 10px;
   left: 10px;
   cursor: pointer;
+  font-size: 24px;
+  z-index: 20;
 }
-
+/* === МЕНЮ НАСТРОЕК === */
 #menu {
   position: fixed;
-  top: 40px;
+  top: 50px;
   left: 10px;
   background: #111;
-  padding: 10px;
-  border: 1px solid #fff;
+  padding: 15px;
+  border: 2px solid #fff;
+  z-index: 20;
 }
-
-#character {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  text-align: center;
+#menu.hidden {
+  display: none;
 }
-
-#character img {
-  width: 64px;
-  height: auto;
+#menu h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
 }
-
-#shiftTimer {
-  margin-top: 5px;
+#menu label {
+  font-size: 14px;
 }
-
+#menu input[type="range"] {
+  width: 100px;
+}
+#menu button {
+  margin-top: 8px;
+  padding: 4px 8px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  font-size: 14px;
+  cursor: pointer;
+}
+/* === РЕПУТАЦИЯ (центр, сверху) === */
 #reputation {
   position: fixed;
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
+  font-size: 18px;
+  z-index: 10;
+  text-shadow: 1px 1px 0 #000;
 }
-
+/* === ПЕРСОНАЖ + ТАЙМЕР (уменьшено) === */
+#character {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  text-align: center;
+  z-index: 10;
+}
+#character img {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+}
+#shiftTimer {
+  font-size: 14px;
+  margin-top: 2px;
+  text-shadow: 1px 1px 0 #000;
+}
+/* === ШКАЛА СДВГ (внизу слева) === */
 #adhd-bar-container {
   position: fixed;
   bottom: 70px;
   left: 10px;
   width: 80vw;
-  height: 10px;
+  height: 12px;
   border: 1px solid #fff;
+  z-index: 10;
 }
-
 #adhd-bar {
   height: 100%;
   width: 100%;
   background: white;
+  transition: width 0.2s;
 }
-
+/* === КНОПКА «КЛАЦ» (центр внизу) === */
 #click-button {
   position: fixed;
-  bottom: 10px;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   background: #fff;
   color: #000;
-  padding: 10px;
+  padding: 12px 24px;
   border: 2px solid #000;
-  cursor: pointer;
+  border-radius: 8px;
+  font-size: 18px;
+  text-shadow: 1px 1px 0 #000;
+  transition: transform 0.1s;
+  z-index: 10;
 }
-
+#click-button:active {
+  transform: translateX(-50%) scale(0.95);
+}
+/* === ПАНЕЛЬ ПРОКАЧЕК (правый низ) === */
 #upgrades {
   position: fixed;
-  bottom: 10px;
+  bottom: 15px;
   right: 10px;
-  max-width: 150px;
+  max-width: 160px;
+  font-size: 12px;
+  z-index: 10;
 }
-
+#upgrades button {
+  display: block;
+  margin-bottom: 6px;
+  width: 100%;
+  padding: 4px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+#upgrades button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* === ОКНО ИВЕНТА: ЗВОНОК (центр экрана) === */
 #event {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #111;
-  padding: 10px;
+  padding: 12px;
   border: 2px solid #fff;
+  z-index: 20;
+  text-align: center;
+  width: 80vw;
+  max-width: 300px;
 }
-
+#event p {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+#event button {
+  margin: 4px;
+  padding: 4px 8px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  font-size: 14px;
+  cursor: pointer;
+}
+/* === ЭКРАН «TIKTOK» (полноэкран, надпись крупно) === */
 #tiktok {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #222;
+  background: rgba(30, 30, 30, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 48px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  z-index: 30;
+  color: #fff;
+  text-shadow: 2px 2px 0 #000;
 }
-
+#tiktok.hidden {
+  display: none;
+}
+/* === ЭНЕРГЕТИК (нижний левый угол) === */
 #energy-drink {
   position: fixed;
-  bottom: 10px;
+  bottom: 15px;
   left: 10px;
+  font-size: 24px;
   cursor: pointer;
+  z-index: 10;
+  text-shadow: 1px 1px 0 #000;
 }
-
-.hidden {
+#energy-drink.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* === ПОЛОСА ПРОГРЕССА ДЛЯ КОЛЕСА (мини-игра) === */
+#spinner-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  max-width: 300px;
+  background: #111;
+  border: 2px solid #fff;
+  padding: 12px;
+  z-index: 25;
+  text-align: center;
   display: none;
+}
+#spinner-bar {
+  width: 100%;
+  height: 12px;
+  border: 1px solid #fff;
+  margin-top: 10px;
+}
+#spinner-progress {
+  height: 100%;
+  width: 0%;
+  background: white;
+  transition: width 0.1s;
 }
