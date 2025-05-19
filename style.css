@@ -1,73 +1,89 @@
 
 body {
-  margin: 0;
-  font-family: sans-serif;
-  background-image: url('assets/background.png');
-  background-size: cover;
-  color: #fff;
-  text-align: center;
+    font-family: 'Courier New', monospace;
+    background-color: #111;
+    color: #0f0;
+    margin: 0;
+    overflow: hidden;
 }
-
-.game-container {
-  padding: 20px;
-  background: rgba(0,0,0,0.6);
-  max-width: 400px;
-  margin: auto;
-  border-radius: 15px;
-  margin-top: 40px;
+#title {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
 }
-
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
+#respect-bar {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
-
-button img {
-  width: 120px;
-  height: auto;
-}
-
-.upgrades {
-  margin-top: 20px;
-}
-
-#menu-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 28px;
-  cursor: pointer;
-  z-index: 999;
-}
-
-#character-zone {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  text-align: center;
-}
-
 #character {
-  width: 100px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 64px;
+    height: 64px;
+    background-image: url('assets/char.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
-
-#timer {
-  font-size: 18px;
-  margin-top: 5px;
-  background: rgba(0,0,0,0.6);
-  padding: 4px 8px;
-  border-radius: 8px;
+#shift-timer {
+    position: absolute;
+    top: 80px;
+    right: 10px;
 }
-
-.shake {
-  animation: shake 0.2s;
+#adhd-bar-wrapper {
+    position: absolute;
+    bottom: 80px;
+    left: 10px;
+    width: 80%;
+    height: 10px;
+    background: #444;
 }
-
+#adhd-bar {
+    height: 100%;
+    width: 100%;
+    background: #0ff;
+}
+#energy-drink {
+    position: absolute;
+    bottom: 80px;
+    right: 10px;
+    cursor: pointer;
+}
+#click-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0f0;
+    color: #000;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    animation: shake 0.1s infinite;
+}
 @keyframes shake {
-  0% { transform: translate(0px, 0px) rotate(0deg); }
-  25% { transform: translate(2px, -2px) rotate(-2deg); }
-  50% { transform: translate(-2px, 2px) rotate(2deg); }
-  75% { transform: translate(2px, 2px) rotate(0deg); }
-  100% { transform: translate(0px, 0px) rotate(0deg); }
+    0% { transform: translateX(-50%) translateY(-1px); }
+    50% { transform: translateX(-50%) translateY(1px); }
+    100% { transform: translateX(-50%) translateY(-1px); }
+}
+#menu-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+#menu {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    background: #222;
+    padding: 10px;
+    border: 1px solid #fff;
+}
+.hidden {
+    display: none;
 }

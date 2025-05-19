@@ -1,35 +1,46 @@
 
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ROST Clicker</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROST Clicker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="menu-button">☰</div>
-
-  <div id="character-zone">
-    <img src="assets/character-idle.gif" id="character" alt="Character">
-    <div id="timer">⏱ 60</div>
-  </div>
-
-  <div class="game-container">
-    <h1>ROST Clicker</h1>
-    <div class="respect-counter">💼 Респект: <span id="respect">0</span></div>
-
-    <button id="work-button">
-      <img src="assets/work-button.png" alt="Работать">
-    </button>
-
-    <div class="upgrades">
-      <h2>Прокачки</h2>
-      <div id="shop"></div>
+    <div id="menu-button">☰</div>
+    <div id="menu" class="hidden">
+        <h2>Настройки</h2>
+        <label>Музыка: <input type="range" id="music-volume" min="0" max="1" step="0.01"></label>
+        <label>Звуки: <input type="range" id="sound-volume" min="0" max="1" step="0.01"></label>
+        <button onclick="restartGame()">🔁 Рестарт</button>
     </div>
 
-    <div id="message"></div>
-  </div>
+    <div id="title">ROST Clicker</div>
+    <div id="respect-bar">👊 Респект: <span id="respect">0</span></div>
+    <div id="character"></div>
+    <div id="shift-timer">⏱ 00:30</div>
 
-  <script src="script.js"></script>
+    <div id="adhd-bar-wrapper">
+        <div id="adhd-bar"></div>
+    </div>
+    <div id="energy-drink" onclick="useEnergyDrink()">🥤</div>
+
+    <div id="click-button">КЛАЦ</div>
+    <div id="upgrades"></div>
+
+    <div id="event-container" class="hidden">
+        <p>📞 Входящий звонок!</p>
+        <button id="accept-btn">Принять</button>
+        <button id="decline-btn">Отклонить</button>
+    </div>
+
+    <div id="wheel-container" class="hidden">
+        <p>📞 Разговор... крути, чтобы заполнять!</p>
+        <div id="wheel"></div>
+        <div id="wheel-progress"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
